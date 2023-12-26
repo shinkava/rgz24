@@ -20,6 +20,7 @@
 
 {% block main %}
     <h1>Список заказов</h1>
+    <div class="container">
     <table>
         <thead>
             <tr>
@@ -34,11 +35,11 @@
     <script> 
         fillOrderList();
     </script>
-
+    
     <div>
-        <button onclick="createOrder()">Заказать товары</button>
+        <button class="gradient-button gradient-button-1"  onclick="createOrder()">Заказать товары</button>
     </div>
-
+    </div>
     <div class="modal">
         <input type="hidden" id="num">
         <label>

@@ -20,7 +20,7 @@
 
 {% block main %}
     <h1>Список товаров</h1>
-
+    <div class="container">
     <table>
         <thead>
             <tr>
@@ -35,10 +35,11 @@
     <script>
         fillGoodList()
     </script>
+    <br>
     <div>
-        <button onclick="addGood()">Добавить товар</button>
+        <button class="gradient-button gradient-button-1" onclick="addGood()">Добавить товар</button>
     </div>
-
+    </div>
     <div class="modal">
         <input type="hidden" id="num"><br>
         <label>
@@ -57,4 +58,5 @@
         <button onclick="sendGood()">OK</button>
         <button onclick="cancel()">CANCEL</button>
     </div>
+
 {% endblock %}
