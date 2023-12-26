@@ -58,6 +58,7 @@ def add_good():
     for g in goods:
         if g['articul'] == good['articul']:
             g['count'] += int(good['count'])
+        goods.append(good) 
     return {'num': len(orders)-1}
 
 @rgz.route('/rgz/api/orders/', methods=['GET'])
