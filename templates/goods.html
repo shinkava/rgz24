@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block lab %}Расчетно-графическое задание, Вариант: 24{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+<style>
+    .modal {
+        display: none;
+        z-index: 100;
+        box-shadow: 3px 3px 5px black;
+        width: 400px;
+        left: 50%;
+        margin-left: -200px;
+        position: absolute;
+        padding: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+    <h1>Список товаров</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Артикул</th>
+                <th>Название</th>
+                <th>Количество</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody id="good-list"></tbody>
+    </table>
+    <script>
+        fillGoodList()
+    </script>
+    <div>
+        <button onclick="addGood()">Добавить товар</button>
+    </div>
+
+    <div class="modal">
+        <input type="hidden" id="num"><br>
+        <label>
+            Артикул:
+            <input type="text" id="articul">
+        </label><br>
+        <label>
+            Название:
+            <input type="text" id="name">
+        </label><br>
+        <label>
+            Количество:
+            <input type="number" id="count" min="0">
+        </label><br>
+
+        <button onclick="sendGood()">OK</button>
+        <button onclick="cancel()">CANCEL</button>
+    </div>
+{% endblock %}
