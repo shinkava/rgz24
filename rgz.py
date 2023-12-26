@@ -1,5 +1,7 @@
-from flask import Blueprint, render_template, request, abort, jsonify 
-import datetime as dt  
+from flask import Blueprint, render_template, request, abort, jsonify, flash, redirect
+from flask_login import login_user, login_required, logout_user
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 rgz = Blueprint('rgz', __name__) 
 
@@ -11,13 +13,17 @@ goods = [
 
 orders = []
 
-@rgz.route('/rgz/') 
+@rgz.route('/') 
 def main(): 
     return render_template('index.html') 
+
 @rgz.route('/rgz/goods') 
+@login_required
 def main_g(): 
     return render_template('goods.html') 
+
 @rgz.route('/rgz/orders') 
+@login_required
 def main_o(): 
     return render_template('orders.html') 
 
@@ -90,3 +96,4 @@ def update_order(order_num):
             if product['articul'] == g['articul']:
                 g['count'] -= int(product['count'])
     return jsonify(order)
+
